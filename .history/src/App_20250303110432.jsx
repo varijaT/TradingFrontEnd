@@ -1,14 +1,14 @@
-import Navbar from "./pages/Navbar/Navbar";  
+import Navbar from "./pages/Navbar/Navbar"; 
 import Home from "./pages/Home/Home";
 import Portfolio from "./pages/Portfilio/Portfolio";
 import Auth from "./pages/Auth/Auth";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import StockDetails from "./pages/StockDetails/StockDetails";
 import Profile from "./pages/Profile/Profile";
 import Notfound from "./pages/Notfound/Notfound";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getUser, logout } from "./Redux/Auth/Action"; // Import logout action
+import { getUser } from "./Redux/Auth/Action";
 import Wallet from "./pages/Wallet/Wallet";
 import Watchlist from "./pages/Watchlist/Watchlist";
 import TwoFactorAuth from "./pages/Auth/TwoFactorAuth";
@@ -22,6 +22,7 @@ import WithdrawalAdmin from "./Admin/Withdrawal/WithdrawalAdmin";
 import Activity from "./pages/Activity/Activity";
 import SearchCoin from "./pages/Search/Search";
 import { shouldShowNavbar } from "./Util/shouldShowNavbar";
+import SideBar from "./SideBar/SideBar";
 
 const routes = [
   { path: "/", role: "ROLE_USER" },
@@ -41,28 +42,17 @@ const routes = [
 function App() {
   const { auth } = useSelector((store) => store);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      dispatch(getUser(token));
-    }
+    dispatch(getUser(localStorage.getItem("jwt")));
   }, [dispatch]);
-
-  // Logout user if token is missing (handle auto logout)
-  useEffect(() => {
-    if (!localStorage.getItem("jwt") && auth.user) {
-      dispatch(logout());
-      navigate("/");
-    }
-  }, [auth.user, dispatch, navigate]);
 
   const showNavbar = auth.user ? shouldShowNavbar(location.pathname, routes, auth.user?.role) : false;
 
   return (
     <>
       {showNavbar && <Navbar />}
+      {auth.user && <SideBar />}
 
       <Routes>
         {auth.user ? (
@@ -101,5 +91,3 @@ function App() {
 }
 
 export default App;
-
-

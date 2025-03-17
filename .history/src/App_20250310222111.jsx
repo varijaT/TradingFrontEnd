@@ -14,7 +14,7 @@ import Watchlist from "./pages/Watchlist/Watchlist";
 import TwoFactorAuth from "./pages/Auth/TwoFactorAuth";
 import ResetPasswordForm from "./pages/Auth/ResetPassword";
 import PasswordUpdateSuccess from "./pages/Auth/PasswordUpdateSuccess";
-import LoginWithGoogle from "./pages/Auth/LoginWithGoogle.";
+import LoginWithGoogle from "./pages/Auth/LoginWithGoogle";
 import PaymentSuccess from "./pages/Wallet/PaymentSuccess";
 import Withdrawal from "./pages/Wallet/Withdrawal";
 import PaymentDetails from "./pages/Wallet/PaymentDetails";
@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     if (!localStorage.getItem("jwt") && auth.user) {
       dispatch(logout());
-      navigate("/");
+      navigate("/login");
     }
   }, [auth.user, dispatch, navigate]);
 

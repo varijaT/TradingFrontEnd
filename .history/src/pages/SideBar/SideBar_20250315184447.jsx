@@ -32,7 +32,7 @@ const SideBar = () => {
     console.log("Logout button clicked!");
     dispatch(logout()); // Dispatch logout action
     localStorage.removeItem("jwt"); // Remove auth token
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (
@@ -51,12 +51,12 @@ const SideBar = () => {
       ))}
 
       {/* Logout Button */}
-      <div className="mt-auto border-t border-gray-300 pt-5">
+      <div className="border-t border-gray-300 mt-5 pt-5">
            <SheetClose className="w-full">
               <Button
               onClick={handleLogout}
                variant="destructive"
-               className="logout-button flex items-center justify-start"
+               className="logout-button"
               >
                <span className="w-8">
                 <ExitIcon className="h-6 w-6" />

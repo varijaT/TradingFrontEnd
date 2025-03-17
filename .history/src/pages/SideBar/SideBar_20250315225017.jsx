@@ -32,7 +32,7 @@ const SideBar = () => {
     console.log("Logout button clicked!");
     dispatch(logout()); // Dispatch logout action
     localStorage.removeItem("jwt"); // Remove auth token
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (

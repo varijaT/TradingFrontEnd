@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     if (!localStorage.getItem("jwt") && auth.user) {
       dispatch(logout());
-      navigate("/");
+      navigate("/login");
     }
   }, [auth.user, dispatch, navigate]);
 

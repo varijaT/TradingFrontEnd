@@ -32,7 +32,7 @@ const SideBar = () => {
     console.log("Logout button clicked!");
     dispatch(logout()); // Dispatch logout action
     localStorage.removeItem("jwt"); // Remove auth token
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (
@@ -51,7 +51,7 @@ const SideBar = () => {
       ))}
 
       {/* Logout Button */}
-      <div className="mt-auto border-t border-gray-300 pt-5">
+      {/*<div className="mt-auto border-t border-gray-300 pt-5">*/}
            <SheetClose className="w-full">
               <Button
               onClick={handleLogout}
@@ -64,7 +64,7 @@ const SideBar = () => {
                    Logout {/* Directly add the label here */}
                 </Button>
             </SheetClose>
-            </div>
+            {/*</div>*/}
        </div> 
   );
 };

@@ -1,4 +1,4 @@
-import { logout } from "@/Redux/Auth/Action";  
+import { logout } from "@/Redux/Auth/Action"; 
 import { Button } from "@/components/ui/button";
 import { SheetClose } from "@/components/ui/sheet";
 import {
@@ -9,7 +9,7 @@ import {
   ActivityLogIcon,
   PersonIcon,
 } from "@radix-ui/react-icons";
-import { CreditCard, Landmark, Wallet } from "lucide-react";
+import { CreditCard, Landmark , Wallet } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -29,15 +29,14 @@ const SideBar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    console.log("Logout button clicked!");
-    dispatch(logout()); // Dispatch logout action
+    dispatch(logout());
     localStorage.removeItem("jwt"); // Remove auth token
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (
-    <div className="mt-10 space-y-5 sidebar open">
-      {menu.map((item, index) => (
+    <div className="mt-10 space-y-5">
+      {menu.map((item , index) => (
         <SheetClose key={index} className="w-full">
           <Button
             onClick={() => navigate(item.path)}
@@ -51,23 +50,18 @@ const SideBar = () => {
       ))}
 
       {/* Logout Button */}
-      <div className="mt-auto border-t border-gray-300 pt-5">
-           <SheetClose className="w-full">
-              <Button
-              onClick={handleLogout}
-               variant="destructive"
-               className="logout-button flex items-center justify-start"
-              >
-               <span className="w-8">
-                <ExitIcon className="h-6 w-6" />
-               </span>
-                   Logout {/* Directly add the label here */}
-                </Button>
-            </SheetClose>
-            </div>
-       </div> 
+      <SheetClose className="w-full">
+        <Button
+          onClick={handleLogout}
+          variant="destructive" // Red-colored button
+          className="flex items-center gap-5 py-6 w-full"
+        >
+          <span className="w-8"><ExitIcon className="h-6 w-6" /></span>
+          <p>Logout</p>
+        </Button>
+      </SheetClose> 
+    </div>
   );
 };
 
 export default SideBar;
-

@@ -29,14 +29,13 @@ const SideBar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    console.log("Logout button clicked!");
     dispatch(logout()); // Dispatch logout action
     localStorage.removeItem("jwt"); // Remove auth token
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page
   };
 
   return (
-    <div className="mt-10 space-y-5 sidebar open">
+    <div className="mt-10 space-y-5">
       {menu.map((item, index) => (
         <SheetClose key={index} className="w-full">
           <Button
@@ -51,21 +50,19 @@ const SideBar = () => {
       ))}
 
       {/* Logout Button */}
-      <div className="mt-auto border-t border-gray-300 pt-5">
-           <SheetClose className="w-full">
-              <Button
-              onClick={handleLogout}
-               variant="destructive"
-               className="logout-button flex items-center justify-start"
-              >
-               <span className="w-8">
-                <ExitIcon className="h-6 w-6" />
-               </span>
-                   Logout {/* Directly add the label here */}
-                </Button>
-            </SheetClose>
-            </div>
-       </div> 
+      <div className="border-t border-gray-300 mt-5 pt-5"> {/* Adds a separator before logout */}
+        <SheetClose className="w-full">
+          <Button
+            onClick={handleLogout}
+            variant="destructive" // Red-colored button
+            className="flex items-center gap-5 py-6 w-full"
+          >
+            <span className="w-8"><ExitIcon className="h-6 w-6" /></span>
+            <p>Logout</p>
+          </Button>
+        </SheetClose> 
+      </div>
+    </div>
   );
 };
 
