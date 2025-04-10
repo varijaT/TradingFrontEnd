@@ -252,10 +252,9 @@ export const verifyResetPassowrdOTP = ({
 };
 
 export const logout = () => {
-  console.log("Dispatching logout action"); // Debugging
   return (dispatch) => {
-    localStorage.removeItem("jwt"); // Remove token
-    dispatch({ type: actionTypes.LOGOUT}); // Dispatch logout action
+    localStorage.removeItem("jwt"); // Remove token from localStorage
+    dispatch({ type: "LOGOUT" }); // Dispatch the LOGOUT action
   };
 };
 

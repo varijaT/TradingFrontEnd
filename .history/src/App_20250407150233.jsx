@@ -60,10 +60,6 @@ function App() {
 
   const showNavbar = auth.isAuthenticated ? shouldShowNavbar(location.pathname, routes, auth.user?.role) : false;
 
-  if (auth.loading) {
-    return <div>Loading...</div>; // Show a loading indicator while fetching user data
-  }
-
   return (
     <>
       {showNavbar && <Navbar />}

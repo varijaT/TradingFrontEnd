@@ -61,8 +61,13 @@ const authReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case LOGOUT:
-      localStorage.removeItem("jwt");
-      return { ...state, jwt: null, user: null, isAuthenticated: false, };
+      return {
+        ...state,
+        jwt: null,
+        user: null,
+        isAuthenticated: false, // Reset isAuthenticated to false
+        loading: false,
+      };
     default:
       return state;
   }

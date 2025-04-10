@@ -255,7 +255,7 @@ export const logout = () => {
   console.log("Dispatching logout action"); // Debugging
   return (dispatch) => {
     localStorage.removeItem("jwt"); // Remove token
-    dispatch({ type: actionTypes.LOGOUT}); // Dispatch logout action
+    dispatch({ type: "LOGOUT_SUCCESS" }); // Dispatch logout action
   };
 };
 

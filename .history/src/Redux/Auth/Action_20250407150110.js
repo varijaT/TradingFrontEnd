@@ -39,8 +39,8 @@ export const login = (userData) => async (dispatch) => {
     if (user.jwt) {
       localStorage.setItem("jwt", user.jwt);
       dispatch({ type: actionTypes.LOGIN_SUCCESS, payload: user.jwt });
-      await dispatch(getUser(user.jwt)); // Wait for user profile to be fetched
-      userData.navigate("/"); // Navigate only after user profile is fetched
+      dispatch(getUser(user.jwt)); // Fetch user profile after login
+      userData.navigate("/"); // Navigate after user profile is fetched
     }
   } catch (error) {
     dispatch({
@@ -80,19 +80,23 @@ export const twoStepVerification =
   };
 
 //  get user from token
-export const getUser = (token) => async (dispatch) => {
-  dispatch({ type: actionTypes.GET_USER_REQUEST });
-  try {
-    const response = await axios.get(`${API_BASE_URL}/api/users/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const user = response.data;
-    dispatch({ type: actionTypes.GET_USER_SUCCESS, payload: user });
-  } catch (error) {
-    dispatch({ type: actionTypes.GET_USER_FAILURE, payload: null });
-  }
+export const getUser = (token) => {
+  return async (dispatch) => {
+    dispatch({ type: actionTypes.GET_USER_REQUEST });
+    try {
+      const response = await axios.get(`${API_BASE_URL}/api/users/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const user = response.data;
+      dispatch({ type: actionTypes.GET_USER_SUCCESS, payload: user });
+      console.log("req User ", user);
+    } catch (error) {
+      const errorMessage = null;
+      dispatch({ type: actionTypes.GET_USER_FAILURE, payload: errorMessage });
+    }
+  };
 };
 
 export const sendVerificationOtp = ({ jwt, verificationType }) => {
@@ -255,7 +259,7 @@ export const logout = () => {
   console.log("Dispatching logout action"); // Debugging
   return (dispatch) => {
     localStorage.removeItem("jwt"); // Remove token
-    dispatch({ type: actionTypes.LOGOUT}); // Dispatch logout action
+    dispatch({ type: "LOGOUT_SUCCESS" }); // Dispatch logout action
   };
 };
 
