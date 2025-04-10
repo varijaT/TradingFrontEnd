@@ -70,7 +70,7 @@ console.log("---------- ",auth.error)
 
               {location.pathname == "/signup" ? (
                 <div className="flex items-center justify-center">
-                  <span> {"Already have an account ?"} </span>
+                  <span> {"don't have account ?"} </span>
                   <Button
                     onClick={() => handleNavigation("/signin")}
                     variant="ghost"
@@ -80,7 +80,7 @@ console.log("---------- ",auth.error)
                 </div>
               ) : (
                 <div className="flex items-center justify-center">
-                  <span>Already have an account ? </span>
+                  <span>Don't have an account ? </span>
                   <Button
                     onClick={() => handleNavigation("/signup")}
                     variant="ghost"
@@ -112,7 +112,7 @@ console.log("---------- ",auth.error)
                   <LoginForm />
 
                   <div className="flex items-center justify-center">
-                    <span>Dont have an account ? </span>
+                    <span>already have account ? </span>
                     <Button
                       onClick={() => handleNavigation("/signup")}
                       variant="ghost"

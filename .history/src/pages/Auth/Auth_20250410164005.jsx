@@ -70,7 +70,7 @@ console.log("---------- ",auth.error)
 
               {location.pathname == "/signup" ? (
                 <div className="flex items-center justify-center">
-                  <span> {"Already have an account ?"} </span>
+                  <span> {"don't have account ?"} </span>
                   <Button
                     onClick={() => handleNavigation("/signin")}
                     variant="ghost"
