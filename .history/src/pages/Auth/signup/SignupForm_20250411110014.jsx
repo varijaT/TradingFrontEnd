@@ -57,10 +57,10 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-center text-2xl font-bold">Create New Account</h1>
+    <div className="space-y-4"> {/* Reduced spacing */}
+      <h1 className="text-center text-2xl font-bold">Create New Account</h1> {/* Adjusted font size */}
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3"> {/* Reduced spacing */}
           {/* Full Name */}
           <FormField
             control={form.control}
@@ -68,7 +68,7 @@ const SignupForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input {...field} type="text" placeholder="Full Name" />
+                  <Input {...field} type="text" placeholder="Full Name" className="py-2 px-3" /> {/* Adjusted padding */}
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -203,7 +203,7 @@ const SignupForm = () => {
 
           {/* Submit Button */}
           {!auth.loading ? (
-            <Button type="submit" className="w-full py-3">
+            <Button type="submit" className="w-full py-3"> {/* Reduced button height */}
               Register
             </Button>
           ) : (

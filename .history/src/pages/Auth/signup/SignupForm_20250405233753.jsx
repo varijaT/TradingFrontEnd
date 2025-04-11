@@ -57,10 +57,10 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <h1 className="text-center text-2xl font-bold">Create New Account</h1>
+    <div className="space-y-5">
+      <h1 className="text-center text-xl">Create New Account</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {/* Full Name */}
           <FormField
             control={form.control}
@@ -203,7 +203,7 @@ const SignupForm = () => {
 
           {/* Submit Button */}
           {!auth.loading ? (
-            <Button type="submit" className="w-full py-3">
+            <Button type="submit" className="w-full py-5">
               Register
             </Button>
           ) : (

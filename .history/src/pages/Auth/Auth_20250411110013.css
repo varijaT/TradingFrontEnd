@@ -35,7 +35,6 @@ h1 {
   color: white;
   font-size: 2rem; /* Adjust font size for better visibility */
 }
-
 /* Add responsive styles for the form */
 @media (max-width: 768px) {
   .bgBlure {
